@@ -1,0 +1,26 @@
+class Author
+  def self.post_count
+    Post.all.length
+  end
+
+  attr_reader :posts
+  attr_accessor :name
+
+
+  def initialize(name)
+    @name = name
+    @posts = []
+  end
+
+  
+  def add_post(post)
+    posts << post
+    post.author = self
+  end
+
+  def add_post_by_title(title)
+    post = Post.new(title)
+    add_post(post)
+  end
+
+end
